@@ -16,16 +16,56 @@ Usar la inteligencia artificial como un **"espejo emocional"**. El usuario escri
 
 ---
 
-## 🚀 Despliegue en GitHub Pages
+## 🤖 Configuración de la API de Gemini
 
-La aplicación está configurada para desplegarse automáticamente en GitHub Pages.
+### Desarrollo Local
 
-### Configuración Automática
+1. **Copia el archivo de ejemplo:**
+   ```bash
+   cp .env.example .env
+   ```
 
-1. **Sube tu código a GitHub** (en la rama `main`)
-2. **Ve a Settings > Pages** en tu repositorio
-3. **Selecciona "GitHub Actions"** como fuente
-4. **El despliegue se hará automáticamente** cada vez que hagas push
+2. **Agrega tu API Key en `.env`:**
+   ```
+   VITE_USE_GATEWAY=false
+   VITE_GEMINI_API_KEY=tu-api-key-aqui
+   ```
+
+3. **Obtén tu API Key en:** [Google AI Studio](https://makersuite.google.com/app/apikey)
+
+### Producción (API Gateway de Copilli en Render) 🔒
+
+**La API key estará completamente oculta en el servidor:**
+
+Este proyecto usa el **[Copilli API Gateway](https://github.com/Copilli/copilli-api-gateway)**, un backend centralizado que maneja de forma segura todas las API keys de los proyectos de Copilli.
+
+1. Despliega el API Gateway en Render (solo una vez para todos los proyectos)
+2. Obtén la URL del gateway (ej: `https://copilli-api-gateway.onrender.com`)
+3. Configura las variables de entorno en GitHub Pages
+
+📚 **[Guía completa de despliegue en Render →](RENDER_DEPLOY.md)**
+
+## 🚀 Despliegue
+
+### Opción 1: GitHub Pages + API Gateway de Copilli (Recomendado) 🔒
+
+1. Conecta tu repo a [Netlify](https://netlify.com)
+2. Agrega `GEMINI_API_KEY` en Environment variables
+3. Despliega automáticamente
+
+**Ventaja:** La API key está oculta en el servidor y nunca se expone al público.
+
+📚 **[Guía detallada de Netlify →](NETLIFY_DEPLOY.md)**
+
+### Opción 2: GitHub Pages (Sin Gateway) ⚠️
+
+Si no quieres usar el gateway (no recomendado):
+
+1. Configura el secret `GEMINI_API_KEY` en GitHub
+2. Sube a GitHub (rama `main`)
+3. Ve a Settings > Pages > Selecciona "GitHub Actions"
+
+**Nota:** La API key será visible en el código compilado.
 
 ### URL de Producción
 Tu aplicación estará disponible en: `https://[tu-usuario].github.io/ghost-writer-ai/`
@@ -61,19 +101,27 @@ ghost-writer-ai/
 ├── src/
 │   ├── components/
 │   │   ├── Navbar.jsx       # Barra de navegación
-│   │   └── Footer.jsx       # Pie de página
+│   │   ├── Footer.jsx       # Pie de página
+│   │   └── GeminiExample.jsx # Componente de ejemplo de IA
 │   ├── pages/
 │   │   ├── Home.jsx         # Página de inicio (Problema y Solución)
 │   │   ├── Team.jsx         # Página de equipo (3 cards de integrantes)
-│   │   └── Emotions.jsx     # Página principal (selector de emociones + texto)
+│   │   └── Emotions.jsx     # Página principal (selector de emociones + generación con IA)
+│   ├── hooks/
+│   │   └── useGemini.js     # Hook personalizado para usar la API de Gemini
+│   ├── config/
+│   │   └── config.js        # Configuración centralizada de la API
 │   ├── App.jsx              # App principal con enrutamiento
 │   ├── App.css              # Estilos principales
 │   ├── index.css            # Estilos globales (Tailwind)
 │   └── main.jsx             # Punto de entrada
+├── .env                     # Variables de entorno (local, no se sube a git)
+├── .env.example             # Ejemplo de variables de entorno
 ├── index.html               # HTML principal
 ├── vite.config.js           # Configuración de Vite
 ├── tailwind.config.js       # Configuración de Tailwind CSS
 ├── postcss.config.js        # Configuración de PostCSS
+├── GEMINI_SETUP.md          # Guía de configuración de Gemini
 └── package.json             # Dependencias del proyecto
 ```
 
@@ -99,8 +147,10 @@ ghost-writer-ai/
 - Area de texto para desahogo (hasta 150 palabras, opcional)
 - Contador de palabras en tiempo real
 - Resumen de emociones seleccionadas
-- Botón para generar composición IA
-- (Nota: La integración con IA se implementará en la próxima fase)
+- Botón para generar composición con IA
+- **Generación automática de poemas** usando Gemini AI
+- Visualización del poema generado con diseño atractivo
+- Opciones para copiar o crear nuevo poema
 
 ## 🛠️ Instalación y Uso
 
@@ -157,12 +207,17 @@ npm run preview
 ✅ Validación de entrada (mínimo 1 emoción seleccionada)
 ✅ Presentación clara del problema y solución
 ✅ Información del equipo con 3 cards
+✅ Integración con API de Gemini configurada
+✅ **Generación automática de poemas** en la página de Emociones
+✅ Interfaz para visualizar y copiar poemas generados
+✅ Hook personalizado para uso de IA (`useGemini`)
+✅ Componente de ejemplo para generación de contenido
 
 ## 🔮 Próximas Funcionalidades (Roadmap)
 
-- [ ] Integración con API de IA (OpenAI o similar)
-- [ ] Generación de poemas automáticos
-- [ ] Generación de canciones
+- [x] Integración con API de IA (Gemini)
+- [x] Generación de poemas automáticos con emociones seleccionadas
+- [ ] Generación de canciones (letras con estructura musical)
 - [ ] Almacenamiento opcional de composiciones
 - [ ] Sistema de audio/TTS
 - [ ] Exportar resultado como PDF/audio

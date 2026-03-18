@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useGemini } from '../hooks/useGemini'
 
 export default function Emotions() {
   const emotions = [
@@ -18,6 +19,9 @@ export default function Emotions() {
   const [text, setText] = useState('')
   const [wordCount, setWordCount] = useState(0)
   const [submitted, setSubmitted] = useState(false)
+  const [generatedPoem, setGeneratedPoem] = useState('')
+  
+  const { generateContent, loading, error } = useGemini()
 
   const toggleEmotion = (emotionId) => {
     setSelectedEmotions((prev) =>
@@ -36,7 +40,7 @@ export default function Emotions() {
     setWordCount(words.length)
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     if (selectedEmotions.length === 0) {
@@ -44,23 +48,32 @@ export default function Emotions() {
       return
     }
 
-    // Here we would send the data to the backend for processing
-    console.log({
-      emotions: selectedEmotions,
-      text,
-      wordCount,
-      timestamp: new Date().toISOString(),
-    })
+    // Construir el prompt para Gemini
+    const emotionsText = selectedEmotions
+      .map((id) => emotions.find((e) => e.id === id)?.label)
+      .filter(Boolean)
+      .join(', ')
 
-    setSubmitted(true)
+    const prompt = text.trim()
+      ? `Eres un poeta sensible y empático. Basándote en las siguientes emociones: ${emotionsText}, y en este texto personal: "${text}", crea un poema hermoso y profundo en español que capture estos sentimientos. El poema debe ser reconfortante, inspirador y ayudar a la persona a procesar sus emociones. Usa un lenguaje poético y metáforas apropiadas.`
+      : `Eres un poeta sensible y empático. Crea un poema hermoso y profundo en español que capture las siguientes emociones: ${emotionsText}. El poema debe ser reconfortante, inspirador y ayudar a la persona a procesar estos sentimientos. Usa un lenguaje poético y metáforas apropiadas.`
 
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setSelectedEmotions([])
-      setText('')
-      setWordCount(0)
-      setSubmitted(false)
-    }, 3000)
+    try {
+      const result = await generateContent(prompt, { temperature: 0.8 })
+      setGeneratedPoem(result)
+      setSubmitted(true)
+    } catch (err) {
+      console.error('Error al generar el poema:', err)
+      alert('Hubo un error al generar tu composición. Por favor, intenta de nuevo.')
+    }
+  }
+
+  const handleReset = () => {
+    setSelectedEmotions([])
+    setText('')
+    setWordCount(0)
+    setSubmitted(false)
+    setGeneratedPoem('')
   }
 
   const selectedEmotionsLabels = selectedEmotions
@@ -80,17 +93,52 @@ export default function Emotions() {
         </p>
       </section>
 
-      {/* Submitted Success Message */}
-      {submitted && (
-        <div className="mb-8 p-6 bg-green-100 border border-green-400 text-green-800 rounded-lg text-center">
-          <h3 className="text-2xl font-bold mb-2">✨ ¡Tu desahogo ha sido registrado!</h3>
-          <p className="text-lg">
-            Tu composición IA se está generando. Pronto podrás ver el resultado.
-          </p>
+      {/* Error Message */}
+      {error && (
+        <div className="mb-8 p-6 bg-red-100 border border-red-400 text-red-800 rounded-lg">
+          <h3 className="text-xl font-bold mb-2">⚠️ Error</h3>
+          <p className="text-sm">{error.message}</p>
+        </div>
+      )}
+
+      {/* Generated Poem Display */}
+      {submitted && generatedPoem && (
+        <div className="mb-8 bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200 rounded-xl shadow-xl overflow-hidden">
+          <div className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-4">
+            <h3 className="text-2xl font-bold">✨ Tu Composición Poética</h3>
+            <p className="text-purple-100 text-sm mt-1">
+              Basada en tus emociones: {selectedEmotionsLabels.join(', ')}
+            </p>
+          </div>
+          <div className="p-8">
+            <div className="prose prose-lg max-w-none">
+              <pre className="whitespace-pre-wrap font-serif text-gray-800 leading-relaxed text-lg">
+                {generatedPoem}
+              </pre>
+            </div>
+            <div className="mt-8 flex gap-4">
+              <button
+                onClick={handleReset}
+                className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 px-6 rounded-lg font-bold hover:shadow-lg transition transform hover:scale-105"
+              >
+                ✨ Crear Otra Composición
+              </button>
+              <button
+                onClick={() => {
+                  navigator.clipboard.writeText(generatedPoem)
+                  alert('¡Poema copiado al portapapeles!')
+                }}
+                className="flex-1 bg-white border-2 border-purple-600 text-purple-600 py-3 px-6 rounded-lg font-bold hover:bg-purple-50 transition"
+              >
+                📋 Copiar Poema
+              </button>
+            </div>
+          </div>
         </div>
       )}
 
       {/* Form */}
+      {!submitted && (
       <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-lg">
         {/* Emotions Selection */}
         <div className="mb-10">
@@ -165,16 +213,17 @@ export default function Emotions() {
         {/* Submit Button */}
         <button
           type="submit"
-          disabled={selectedEmotions.length === 0 || submitted}
+          disabled={selectedEmotions.length === 0 || loading}
           className={`w-full py-4 px-6 rounded-lg font-bold text-lg transition transform hover:scale-105 ${
-            selectedEmotions.length === 0 || submitted
+            selectedEmotions.length === 0 || loading
               ? 'bg-gray-300 text-gray-600 cursor-not-allowed'
               : 'bg-gradient-to-r from-primary to-secondary text-white hover:shadow-lg'
           }`}
         >
-          {submitted ? '⏳ Procesando...' : '✨ Generar Composición'}
+          {loading ? '⏳ Generando tu composición...' : '✨ Generar Composición'}
         </button>
       </form>
+      )}
 
       {/* Info Box */}
       <section className="mt-12 bg-blue-50 border border-blue-200 p-8 rounded-lg">
