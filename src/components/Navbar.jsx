@@ -14,13 +14,13 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link to="/team" className="text-gray-700 hover:text-primary font-medium transition">
-              Nosotros
+            <Link to="/emotions" className="text-gray-700 hover:text-primary font-medium transition">
+              Emociones
             </Link>
           </li>
           <li>
-            <Link to="/emotions" className="text-gray-700 hover:text-primary font-medium transition">
-              Emociones
+            <Link to="/team" className="text-gray-700 hover:text-primary font-medium transition">
+              Sobre Nosotros
             </Link>
           </li>
         </ul>

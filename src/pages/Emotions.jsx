@@ -72,7 +72,6 @@ export default function Emotions() {
           emotions: selectedEmotions,
           text,
           temperature: 0.8,
-          maxTokens: 1024,
         }),
       })
 
