@@ -32,9 +32,7 @@ jobs:
 
       - name: Build
         env:
-          VITE_USE_GATEWAY: true
           VITE_API_GATEWAY_URL: https://copilli-api-gateway.onrender.com
-          VITE_API_SECRET_KEY: ${{ secrets.API_SECRET_KEY }}
         run: npm run build
 
       - name: Setup Pages
