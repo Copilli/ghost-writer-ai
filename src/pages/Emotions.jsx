@@ -23,6 +23,13 @@ export default function Emotions() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
+  const normalizePoemText = (text = '') =>
+    text
+      .replace(/\r/g, '')
+      .replace(/^\s{0,3}#{1,6}\s*/gm, '')
+      .replace(/\n{3,}/g, '\n\n')
+      .trim()
+
   const toggleEmotion = (emotionId) => {
     setSelectedEmotions((prev) =>
       prev.includes(emotionId)
@@ -75,7 +82,7 @@ export default function Emotions() {
       }
 
       const data = await response.json()
-      setGeneratedPoem(data?.data?.text || '')
+      setGeneratedPoem(normalizePoemText(data?.data?.text || ''))
       setSubmitted(true)
     } catch (requestError) {
       console.error('Error al generar el poema:', requestError)

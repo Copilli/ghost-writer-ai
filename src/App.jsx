@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
@@ -8,7 +8,7 @@ import './App.css'
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <div className="flex flex-col min-h-screen bg-gray-50">
         <Navbar />
         <main className="flex-grow">
@@ -20,7 +20,7 @@ function App() {
         </main>
         <Footer />
       </div>
-    </Router>
+    </BrowserRouter>
   )
 }
 
