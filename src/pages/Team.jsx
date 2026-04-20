@@ -1,3 +1,8 @@
+import alegriaImg from '../assets/Alegria.png'
+import amorImg from '../assets/Amor.png'
+import soledadImg from '../assets/Soledad.png'
+import esperanzaImg from '../assets/Esperanza.png'
+
 export default function Team() {
   const teamMembers = [
     {
@@ -5,7 +10,7 @@ export default function Team() {
       name: "Zyanya Ramirez",
       role: "Diseñadora UX/UI",
       bio: "Especialista en experiencia de usuario con 5 años en diseño de aplicaciones de bienestar mental.",
-      image: "👩‍🎨",
+      image: alegriaImg,
       email: "zyanya.ramirez@copilli.edu.mx",
     },
     {
@@ -13,18 +18,10 @@ export default function Team() {
       name: "Amahia Gomez",
       role: "Desarrollador Full Stack",
       bio: "Ingeniero de software apasionado por crear soluciones tecnológicas que impacten positivamente la salud mental.",
-      image: "👨‍💻",
+      image: amorImg,
       email: "amahia.gomez@copilli.edu.mx",
     },
-    {
-      id: 3,
-      name: "Mia Mendoza",
-      role: "Especialista en IA y Psicología",
-      bio: "Psicóloga y especialista en IA, trabajo en modelos de IA ético y responsable para apoyo emocional.",
-      image: "👩‍🔬",
-      email: "mia.mendoza@copilli.edu.mx",
-    },
-  ]
+  ];
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-12">
@@ -42,7 +39,7 @@ export default function Team() {
 
       {/* Mission Section */}
       <section className="mb-16 bg-indigo-50 p-8 rounded-lg">
-        <h2 className="text-3xl font-bold text-gray-900 mb-6">🎯 Nuestra Misión</h2>
+        <h2 className="text-3xl font-bold text-gray-900 mb-6">Nuestra Misión</h2>
         <p className="text-lg text-gray-700 mb-4">
           Crear un espacio seguro donde cada persona pueda expresar sus emociones complejas y procesarlas 
           de forma creativa mediante la inteligencia artificial, promoviendo la salud mental y el bienestar emocional.
@@ -66,8 +63,12 @@ export default function Team() {
               className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition transform hover:scale-105"
             >
               {/* Image Placeholder */}
-              <div className="h-48 bg-gradient-to-br from-primary to-secondary flex items-center justify-center TEXT-overflow">
-                <span className="text-7xl">{member.image}</span>
+              <div className="h-48 bg-gradient-to-br from-primary to-secondary flex items-center justify-center overflow-hidden">
+                <img
+                  src={member.image}
+                  alt={`${member.name} foto`}
+                  className="h-full w-full object-cover"
+                />
               </div>
 
               {/* Card Content */}
@@ -100,28 +101,44 @@ export default function Team() {
         </h2>
         <div className="grid md:grid-cols-4 gap-6">
           <div className="text-center">
-            <h3 className="text-4xl mb-3">🔒</h3>
+            <img
+              src={soledadImg}
+              alt="Privacidad"
+              className="mx-auto h-20 w-20 rounded-full object-cover mb-4"
+            />
             <h4 className="font-bold text-gray-900 mb-2">Privacidad</h4>
             <p className="text-gray-600">
               Tu información y emociones son privadas y seguras.
             </p>
           </div>
           <div className="text-center">
-            <h3 className="text-4xl mb-3">❤️</h3>
+            <img
+              src={amorImg}
+              alt="Empatía"
+              className="mx-auto h-20 w-20 rounded-full object-cover mb-4"
+            />
             <h4 className="font-bold text-gray-900 mb-2">Empatía</h4>
             <p className="text-gray-600">
               Entendemos el valor de procesar emociones.
             </p>
           </div>
           <div className="text-center">
-            <h3 className="text-4xl mb-3">🤝</h3>
+            <img
+              src={esperanzaImg}
+              alt="Responsabilidad"
+              className="mx-auto h-20 w-20 rounded-full object-cover mb-4"
+            />
             <h4 className="font-bold text-gray-900 mb-2">Responsabilidad</h4>
             <p className="text-gray-600">
               IA ética que respeta la dignidad humana.
             </p>
           </div>
           <div className="text-center">
-            <h3 className="text-4xl mb-3">✨</h3>
+            <img
+              src={alegriaImg}
+              alt="Innovación"
+              className="mx-auto h-20 w-20 rounded-full object-cover mb-4"
+            />
             <h4 className="font-bold text-gray-900 mb-2">Innovación</h4>
             <p className="text-gray-600">
               Tecnología al servicio del bienestar.

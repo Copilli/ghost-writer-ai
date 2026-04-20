@@ -24,7 +24,7 @@ export default function Home() {
 
       {/* The Problem Section */}
       <section className="mb-16 bg-red-50 p-8 rounded-lg border-l-4 border-red-500">
-        <h2 className="text-3xl font-bold text-gray-900 mb-6">🧠 El Problema</h2>
+        <h2 className="text-3xl font-bold text-gray-900 mb-6"> El Problema</h2>
         <div className="grid md:grid-cols-3 gap-6">
           <div className="bg-white p-6 rounded-lg">
             <h3 className="text-xl font-bold text-gray-900 mb-3">Incapacidad de Expresión</h3>
@@ -49,7 +49,7 @@ export default function Home() {
 
       {/* The Solution Section */}
       <section className="mb-16 bg-indigo-50 p-8 rounded-lg border-l-4 border-primary">
-        <h2 className="text-3xl font-bold text-gray-900 mb-6">💡 Nuestra Solución</h2>
+        <h2 className="text-3xl font-bold text-gray-900 mb-6"> Nuestra Solución</h2>
         <div className="max-w-3xl mx-auto">
           <p className="text-lg text-gray-700 mb-6">
             <strong>Ghost Writer AI</strong> utiliza inteligencia artificial como un <strong>"espejo emocional"</strong>. 
@@ -91,28 +91,28 @@ export default function Home() {
 
       {/* Benefits Section */}
       <section className="mb-16">
-        <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">✨ Beneficios</h2>
+        <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center"> Beneficios</h2>
         <div className="grid md:grid-cols-2 gap-8">
           <div className="bg-white p-6 rounded-lg shadow-md border-t-4 border-secondary">
-            <h3 className="text-xl font-bold text-gray-900 mb-3">🔒 Privacidad Garantizada</h3>
+            <h3 className="text-xl font-bold text-gray-900 mb-3"> Privacidad Garantizada</h3>
             <p className="text-gray-600">
               Tus desahogos son privados por defecto. No se guardan ni comparten sin tu consentimiento.
             </p>
           </div>
           <div className="bg-white p-6 rounded-lg shadow-md border-t-4 border-secondary">
-            <h3 className="text-xl font-bold text-gray-900 mb-3">🎨 Creatividad Terapéutica</h3>
+            <h3 className="text-xl font-bold text-gray-900 mb-3"> Creatividad Terapéutica</h3>
             <p className="text-gray-600">
               Transforma emociones en arte. Poemas y canciones que reflejan tu verdadero sentir.
             </p>
           </div>
           <div className="bg-white p-6 rounded-lg shadow-md border-t-4 border-secondary">
-            <h3 className="text-xl font-bold text-gray-900 mb-3">🧘 Catarsis Emocional</h3>
+            <h3 className="text-xl font-bold text-gray-900 mb-3"> Catarsis Emocional</h3>
             <p className="text-gray-600">
               Procesa tus sentimientos de forma segura, ayudando a tu bienestar mental.
             </p>
           </div>
           <div className="bg-white p-6 rounded-lg shadow-md border-t-4 border-secondary">
-            <h3 className="text-xl font-bold text-gray-900 mb-3">💬 Sin Juzgamiento</h3>
+            <h3 className="text-xl font-bold text-gray-900 mb-3"> Sin Juzgamiento</h3>
             <p className="text-gray-600">
               Un "espejo" que escucha sin juzgar. Tu IA personal de apoyo emocional.
             </p>

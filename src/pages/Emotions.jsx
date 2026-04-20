@@ -1,18 +1,27 @@
 import { useState } from 'react'
 import { CONFIG, getGhostWriterComposeURL, isConfigured } from '../config/config'
+import ansiedadImg from '../assets/Miedo.png'
+import tristezaImg from '../assets/Tristesa.png'
+import iraImg from '../assets/Ira.png'
+import alegriaImg from '../assets/Alegria.png'
+import miedoImg from '../assets/Miedo.png'
+import amorImg from '../assets/Amor.png'
+import confusionImg from '../assets/Confusion.png'
+import soledadImg from '../assets/Soledad.png'
+import esperanzaImg from '../assets/Esperanza.png'
 
 export default function Emotions() {
   const emotions = [
-    { id: 'anxiety', label: 'Ansiedad', emoji: '😰', color: 'bg-yellow-100 border-yellow-400' },
-    { id: 'sadness', label: 'Tristeza', emoji: '😢', color: 'bg-blue-100 border-blue-400' },
-    { id: 'anger', label: 'Ira', emoji: '😠', color: 'bg-red-100 border-red-400' },
-    { id: 'joy', label: 'Alegría', emoji: '😊', color: 'bg-green-100 border-green-400' },
-    { id: 'fear', label: 'Miedo', emoji: '😨', color: 'bg-purple-100 border-purple-400' },
-    { id: 'love', label: 'Amor', emoji: '💓', color: 'bg-pink-100 border-pink-400' },
-    { id: 'confusion', label: 'Confusión', emoji: '😕', color: 'bg-orange-100 border-orange-400' },
-    { id: 'loneliness', label: 'Soledad', emoji: '😔', color: 'bg-indigo-100 border-indigo-400' },
-    { id: 'overwhelm', label: 'Abrumamiento', emoji: '😫', color: 'bg-cyan-100 border-cyan-400' },
-    { id: 'hope', label: 'Esperanza', emoji: '🌟', color: 'bg-yellow-50 border-yellow-300' },
+    { id: 'anxiety', label: 'Ansiedad', color: 'bg-yellow-100 border-yellow-400', image: ansiedadImg },
+    { id: 'sadness', label: 'Tristeza', color: 'bg-blue-100 border-blue-400', image: tristezaImg },
+    { id: 'anger', label: 'Ira', color: 'bg-red-100 border-red-400', image: iraImg },
+    { id: 'joy', label: 'Alegría', color: 'bg-green-100 border-green-400', image: alegriaImg },
+    { id: 'fear', label: 'Miedo', color: 'bg-purple-100 border-purple-400', image: miedoImg },
+    { id: 'love', label: 'Amor', color: 'bg-pink-100 border-pink-400', image: amorImg },
+    { id: 'confusion', label: 'Confusión', color: 'bg-orange-100 border-orange-400', image: confusionImg },
+    { id: 'loneliness', label: 'Soledad', color: 'bg-indigo-100 border-indigo-400', image: soledadImg },
+    { id: 'overwhelm', label: 'Abrumamiento', color: 'bg-cyan-100 border-cyan-400', image: confusionImg },
+    { id: 'hope', label: 'Esperanza', color: 'bg-yellow-50 border-yellow-300', image: esperanzaImg },
   ]
 
   const [selectedEmotions, setSelectedEmotions] = useState([])
@@ -174,13 +183,17 @@ export default function Emotions() {
                   key={emotion.id}
                   type="button"
                   onClick={() => toggleEmotion(emotion.id)}
-                  className={`p-4 rounded-lg border-2 transition transform hover:scale-105 ${
+                  className={`p-4 rounded-lg border-2 transition transform hover:scale-105 flex flex-col items-center gap-2 ${
                     selectedEmotions.includes(emotion.id)
                       ? `${emotion.color} ring-2 ring-offset-2 ring-primary`
                       : 'bg-gray-50 border-gray-300 hover:border-primary'
                   }`}
                 >
-                  <div className="text-4xl mb-2">{emotion.emoji}</div>
+                  <img
+                    src={emotion.image}
+                    alt={emotion.label}
+                    className="h-12 w-12 rounded-full object-cover"
+                  />
                   <div className="text-sm font-bold text-gray-900">
                     {emotion.label}
                   </div>

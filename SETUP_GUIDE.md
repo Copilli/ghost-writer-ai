@@ -1,31 +1,31 @@
-# 🚀 GUÍA RÁPIDA - Ghost Writer AI
+# GUÍA RÁPIDA - Ghost Writer AI
 
-## ✅ ¿Qué se ha creado?
+## Qué se ha creado?
 
 ### Estructura Completa
-- ✅ Proyecto React con Vite configurado
-- ✅ React Router para navegación de 3 páginas
-- ✅ Tailwind CSS para estilos moderno
-- ✅ Todos los componentes listos
+- Proyecto React con Vite configurado
+- React Router para navegación de 3 páginas
+- Tailwind CSS para estilos moderno
+- Todos los componentes listos
 
 ### Páginas Implementadas
 
-#### 1️⃣ HOME (`/`)
+#### 1. HOME (`/`)
 - Hero section atractivo
 - Sección de PROBLEMA (3 cards)
 - Sección de SOLUCIÓN con 4 pasos
 - Beneficios con cards
 - CTA para acceder a la herramienta
 
-#### 2️⃣ ABOUT/TEAM (`/team`)
+#### 2. ABOUT/TEAM (`/team`)
 - Descripción de misión y valores
 - 3 CARDS de integrantes del equipo:
-  - 👩‍🎨 María González - Diseñadora UX/UI
-  - 👨‍💻 Carlos Rodríguez - Desarrollador Full Stack
-  - 👩‍🔬 Laura Martínez - Especialista IA/Psicología
+  - María González - Diseñadora UX/UI
+  - Carlos Rodríguez - Desarrollador Full Stack
+  - Laura Martínez - Especialista IA/Psicología
 - Sección de Valores (4 valores principales)
 
-#### 3️⃣ EMOTIONS (`/emotions`)
+#### 3. EMOTIONS (`/emotions`)
 - Selector interactivo de 10 EMOCIONES:
   - Ansiedad, Tristeza, Ira, Alegría, Miedo
   - Amor, Confusión, Soledad, Abrumamiento, Esperanza
@@ -35,7 +35,7 @@
 - Botón para generar composición
 - Mensaje de éxito después de submit
 
-## 🔧 Instalación y Ejecución
+## Instalación y Ejecución
 
 ### Paso 1: Instalar dependencias
 ```bash
@@ -54,7 +54,7 @@ Se abrirá automáticamente en: http://localhost:3000
 npm run build
 ```
 
-## 📦 Dependencias Instaladas
+## Dependencias Instaladas
 
 ### Main Dependencies
 - react@19.2.4
@@ -68,7 +68,7 @@ npm run build
 - postcss@8.4.0
 - autoprefixer@10.4.0
 
-## 🎨 Diseño
+## Diseño
 
 - **Colores Principales:**
   - Primary: #6366f1 (Indigo)
@@ -78,7 +78,7 @@ npm run build
   - Mobile-first approach
   - Grid breakpoints para tablets y desktop
 
-## 🔮 Próximo Paso: Integración IA
+## Próximo Paso: Integración IA
 
 Cuando esté listo para conectar con IA:
 
@@ -90,7 +90,7 @@ Cuando esté listo para conectar con IA:
    - Devuelva poema generado
 4. Mostrar resultado en nueva página o modal
 
-## 📝 Estructura de Datos (Emotions Page)
+## Estructura de Datos (Emotions Page)
 
 La página está lista para enviar datos en este formato:
 ```json
@@ -102,7 +102,7 @@ La página está lista para enviar datos en este formato:
 }
 ```
 
-## ✨ Características por Página
+## Características por Página
 
 ### Home
 - Problema presentado en 3 dimensiones
@@ -123,7 +123,7 @@ La página está lista para enviar datos en este formato:
 - Feedback visual (ring effect en selección)
 - Soporte para futuro: integración IA
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 Si hay error de módulo no encontrado:
 1. Asegúrate de estar en el directorio correcto
@@ -135,7 +135,7 @@ Si el servidor no abre automáticamente:
 1. Abre manualmente http://localhost:3000
 2. Verifica que el puerto 3000 esté libre
 
-## 📚 Archivos Principales
+## Archivos Principales
 
 ```
 src/
@@ -152,4 +152,4 @@ src/
 
 ---
 
-¡La aplicación está lista para usar y para agregar IA! 🚀
+¡La aplicación está lista para usar y para agregar IA!

@@ -5,7 +5,7 @@ export default function Navbar() {
     <nav className="bg-white shadow-md">
       <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
         <Link to="/" className="flex items-center gap-2">
-          <span className="text-2xl font-bold text-primary">✨ Ghost Writer AI</span>
+          <span className="text-2xl font-bold text-primary">Ghost Writer AI</span>
         </Link>
         <ul className="flex gap-6">
           <li>
