@@ -2,6 +2,12 @@ import alegriaImg from '../assets/Alegria.png'
 import amorImg from '../assets/Amor.png'
 import soledadImg from '../assets/Soledad.png'
 import esperanzaImg from '../assets/Esperanza.png'
+import privacidadImg from '../assets/privacidad.png'
+import empatiaImg from '../assets/empatia.png'
+import responsabilidadImg from '../assets/responsabilidad.png'
+import innovacionImg from '../assets/innovacion.png'
+import amahiaImg from '../assets/Amahia.jpg'
+import naomiImg from '../assets/Naomi.jpg'
 
 export default function Team() {
   const teamMembers = [
@@ -10,7 +16,7 @@ export default function Team() {
       name: "Zyanya Ramirez",
       role: "Diseñadora UX/UI",
       bio: "Especialista en experiencia de usuario con 5 años en diseño de aplicaciones de bienestar mental.",
-      image: alegriaImg,
+      image: naomiImg,
       email: "zyanya.ramirez@copilli.edu.mx",
     },
     {
@@ -18,7 +24,7 @@ export default function Team() {
       name: "Amahia Gomez",
       role: "Desarrollador Full Stack",
       bio: "Ingeniero de software apasionado por crear soluciones tecnológicas que impacten positivamente la salud mental.",
-      image: amorImg,
+      image: amahiaImg,
       email: "amahia.gomez@copilli.edu.mx",
     },
   ];
@@ -56,7 +62,7 @@ export default function Team() {
         <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">
           Nuestro Equipo
         </h2>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-8">
           {teamMembers.map((member) => (
             <div
               key={member.id}
@@ -102,7 +108,7 @@ export default function Team() {
         <div className="grid md:grid-cols-4 gap-6">
           <div className="text-center">
             <img
-              src={soledadImg}
+              src={privacidadImg}
               alt="Privacidad"
               className="mx-auto h-20 w-20 rounded-full object-cover mb-4"
             />
@@ -113,7 +119,7 @@ export default function Team() {
           </div>
           <div className="text-center">
             <img
-              src={amorImg}
+              src={empatiaImg}
               alt="Empatía"
               className="mx-auto h-20 w-20 rounded-full object-cover mb-4"
             />
@@ -124,7 +130,7 @@ export default function Team() {
           </div>
           <div className="text-center">
             <img
-              src={esperanzaImg}
+              src={responsabilidadImg}
               alt="Responsabilidad"
               className="mx-auto h-20 w-20 rounded-full object-cover mb-4"
             />
@@ -135,7 +141,7 @@ export default function Team() {
           </div>
           <div className="text-center">
             <img
-              src={alegriaImg}
+              src={innovacionImg}
               alt="Innovación"
               className="mx-auto h-20 w-20 rounded-full object-cover mb-4"
             />

@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom'
+import logo from '../assets/LOGO.png'
 
 export default function Navbar() {
   return (
     <nav className="bg-white shadow-md">
       <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-        <Link to="/" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-3">
+          <img src={logo} alt="Ghost Writer AI logo" className="h-10 w-10 object-contain" />
           <span className="text-2xl font-bold text-primary">Ghost Writer AI</span>
         </Link>
         <ul className="flex gap-6">
