@@ -9,7 +9,7 @@ import './App.css'
 function App() {
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL}>
-      <div className="flex flex-col min-h-screen bg-gray-50">
+      <div className="app-shell flex flex-col min-h-screen">
         <Navbar />
         <main className="flex-grow">
           <Routes>
